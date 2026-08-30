@@ -26,6 +26,14 @@
 
 ## System architecture
 
+### Visual architecture overview
+
+![LifeExtended AWS Architecture Overview](docs/images/aws-architecture-overview.svg)
+
+This visual overview highlights the deployed cloud topology across the user and admin experiences: Route 53 and CloudFront at the edge, separate S3-hosted frontends, API Gateway entry points, Step Functions orchestration, Lambda-based processing, DynamoDB persistence, SNS fan-out, AppSync real-time updates, SES notifications, and CloudWatch observability.
+
+### Simplified interaction view
+
 ```mermaid
 flowchart LR
     U[User Browser] --> CF[Amazon CloudFront]
@@ -57,17 +65,6 @@ flowchart LR
     L2 -. logs .-> CW
 ```
 
-### AWS workflow snapshots
-
-The deployed system is centered around two separate Step Functions workflows:
-
-| Workflow | Responsibility | Visual walkthrough |
-| --- | --- | --- |
-| `VoteProcess` | Validate input, hash identity, enforce one-vote semantics, update results and publish the vote event | [View workflow](docs/AWS_WORKFLOWS.md#voteprocess--user-voting-workflow) |
-| `CloseElectionProcess` | Close the election, handle final-result processing and publish the administrative event | [View workflow](docs/AWS_WORKFLOWS.md#closeelectionprocess--admin-closure-workflow) |
-
-The detailed workflow page is based on the deployed Step Functions views and presents them as clean GitHub-native diagrams: [AWS Workflow Visuals](docs/AWS_WORKFLOWS.md).
-
 The architecture separates the two main business paths:
 
 ### User voting flow
@@ -88,7 +85,7 @@ The architecture separates the two main business paths:
 4. Final results can be formatted by the workflow and distributed through **SNS / SES**.
 5. The dashboard receives live updates through **AppSync**.
 
-For the deeper architecture walkthrough, see [Architecture](docs/ARCHITECTURE.md).
+For the deeper architecture walkthrough, see [Architecture](docs/ARCHITECTURE.md) and [AWS Workflows](docs/AWS_WORKFLOWS.md).
 
 ## Security and privacy
 
@@ -114,6 +111,11 @@ More detail: [Security Architecture](docs/SECURITY.md).
 The admin application uses **AWS AppSync GraphQL subscriptions** for push-based updates. The deployed design uses a lightweight AppSync resolver path to broadcast events to connected clients, avoiding repeated polling and redundant database reads.
 
 This keeps the dashboard responsive while preserving loose coupling between vote processing and presentation.
+
+## AWS workflow snapshots
+
+- [VoteProcess state-machine walkthrough](docs/AWS_WORKFLOWS.md#voteprocess)
+- [CloseElectionProcess state-machine walkthrough](docs/AWS_WORKFLOWS.md#closeelectionprocess)
 
 ## Application features
 
@@ -246,7 +248,7 @@ baseline-pre-refactor
 ## Documentation
 
 - [AWS / Application Architecture](docs/ARCHITECTURE.md)
-- [AWS Step Functions Workflows](docs/AWS_WORKFLOWS.md)
+- [AWS Workflow Walkthroughs](docs/AWS_WORKFLOWS.md)
 - [Security Architecture](docs/SECURITY.md)
 - [Logging & Observability](docs/OBSERVABILITY.md)
 - [Infrastructure Notes](infrastructure/README.md)
