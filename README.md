@@ -28,7 +28,7 @@
 
 ### Visual architecture overview
 
-![LifeExtended AWS Architecture Overview](docs/images/aws-architecture-overview.svg)
+![LifeExtended AWS Architecture Overview](docs/images/aws-architecture-overview.png)
 
 This visual overview highlights the deployed cloud topology across the user and admin experiences: Route 53 and CloudFront at the edge, separate S3-hosted frontends, API Gateway entry points, Step Functions orchestration, Lambda-based processing, DynamoDB persistence, SNS fan-out, AppSync real-time updates, SES notifications, and CloudWatch observability.
 

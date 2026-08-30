@@ -4,6 +4,8 @@ This document captures the two core Step Functions workflows used by the deploye
 
 ## VoteProcess — User Voting Workflow
 
+![VoteProcess Step Functions](images/vote-process.png)
+
 ```mermaid
 flowchart TD
     START((Start)) --> VALIDATE[Lambda: ValidateInput]
@@ -41,6 +43,8 @@ flowchart TD
 - Centralized orchestration and error handling in Step Functions.
 
 ## CloseElectionProcess — Admin Closure Workflow
+
+![CloseElectionProcess Step Functions](images/close-election-process.png)
 
 ```mermaid
 flowchart TD
