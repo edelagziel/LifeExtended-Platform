@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860" role="img" aria-labelledby="title desc">
+  <title id="title">LifeExtended AWS Architecture Overview</title>
+  <desc id="desc">Overview of the LifeExtended architecture including CloudFront, Route 53, API Gateway, S3, Step Functions, Lambda, SNS, DynamoDB, AppSync, SES, and CloudWatch across separate user and admin flows.</desc>
+  <defs>
+    <style>
+      .label { font: 700 22px Arial, Helvetica, sans-serif; fill: #1f2937; }
+      .small { font: 500 16px Arial, Helvetica, sans-serif; fill: #334155; }
+      .tiny { font: 500 13px Arial, Helvetica, sans-serif; fill: #475569; }
+      .box { rx: 18; ry: 18; stroke: #111827; stroke-opacity: .18; stroke-width: 2; }
+      .arrow { stroke: #475569; stroke-width: 3.2; fill: none; marker-end: url(#arrowHead); }
+      .subtle { stroke: #94a3b8; stroke-width: 2.2; fill: none; marker-end: url(#arrowHead); }
+      .dashed { stroke-dasharray: 8 8; }
+    </style>
+    <marker id="arrowHead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#475569" />
+    </marker>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#e5e7eb" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1400" height="860" fill="#ffffff" />
+  <rect width="1400" height="860" fill="url(#grid)" opacity="0.45" />
+  <text x="700" y="48" text-anchor="middle" class="label">LifeExtended — Deployed AWS Architecture Overview</text>
+  <text x="700" y="76" text-anchor="middle" class="small">Separate user and admin flows, serverless orchestration, real-time delivery, and observability</text>
+  <rect x="860" y="105" width="170" height="76" class="box" fill="#f8fafc"/>
+  <text x="945" y="136" text-anchor="middle" class="small">Admin Browser</text>
+  <text x="945" y="160" text-anchor="middle" class="tiny">Administrative UI</text>
+  <rect x="1090" y="105" width="170" height="76" class="box" fill="#f8fafc"/>
+  <text x="1175" y="136" text-anchor="middle" class="small">User Browser</text>
+  <text x="1175" y="160" text-anchor="middle" class="tiny">Voting / wellness UI</text>
+  <rect x="1005" y="210" width="110" height="74" class="box" fill="#ffedd5"/>
+  <text x="1060" y="242" text-anchor="middle" class="small">Route 53</text>
+  <text x="1060" y="264" text-anchor="middle" class="tiny">DNS</text>
+  <rect x="975" y="325" width="170" height="92" class="box" fill="#ede9fe"/>
+  <text x="1060" y="358" text-anchor="middle" class="small">CloudFront</text>
+  <text x="1060" y="382" text-anchor="middle" class="tiny">HTTPS • DDoS protection</text>
+  <text x="1060" y="402" text-anchor="middle" class="tiny">Path-based routing</text>
+  <rect x="645" y="300" width="165" height="105" class="box" fill="#ddd6fe"/>
+  <text x="727" y="338" text-anchor="middle" class="small">API Gateway</text>
+  <text x="727" y="364" text-anchor="middle" class="tiny">Routes:</text>
+  <text x="727" y="384" text-anchor="middle" class="tiny">/api/*   /admin/*</text>
+  <rect x="850" y="472" width="160" height="108" class="box" fill="#d9f99d"/>
+  <text x="930" y="512" text-anchor="middle" class="small">S3 Bucket — User UI</text>
+  <text x="930" y="538" text-anchor="middle" class="tiny">Voting Web App</text>
+  <text x="930" y="558" text-anchor="middle" class="tiny">(HTML / CSS / JS)</text>
+  <rect x="1090" y="472" width="160" height="108" class="box" fill="#d9f99d"/>
+  <text x="1170" y="512" text-anchor="middle" class="small">S3 Bucket — Admin UI</text>
+  <text x="1170" y="538" text-anchor="middle" class="tiny">Admin Dashboard</text>
+  <text x="1170" y="558" text-anchor="middle" class="tiny">(React)</text>
+  <rect x="460" y="470" width="165" height="108" class="box" fill="#f9a8d4"/>
+  <text x="542" y="510" text-anchor="middle" class="small">Step Functions</text>
+  <text x="542" y="536" text-anchor="middle" class="small">CloseElectionProcess</text>
+  <text x="542" y="559" text-anchor="middle" class="tiny">Admin Flow</text>
+  <rect x="650" y="470" width="165" height="108" class="box" fill="#f472b6"/>
+  <text x="732" y="510" text-anchor="middle" class="small">Step Functions</text>
+  <text x="732" y="536" text-anchor="middle" class="small">VoteProcess</text>
+  <text x="732" y="559" text-anchor="middle" class="tiny">User Voting Flow</text>
+  <rect x="470" y="635" width="116" height="62" class="box" fill="#f3f4f6"/>
+  <text x="528" y="660" text-anchor="middle" class="small">Lambda</text>
+  <text x="528" y="682" text-anchor="middle" class="tiny">Close / compute</text>
+  <rect x="665" y="635" width="116" height="62" class="box" fill="#f3f4f6"/>
+  <text x="723" y="660" text-anchor="middle" class="small">Lambda</text>
+  <text x="723" y="682" text-anchor="middle" class="tiny">Validate / hash / write</text>
+  <rect x="855" y="635" width="130" height="62" class="box" fill="#f3f4f6"/>
+  <text x="920" y="660" text-anchor="middle" class="small">Notifier Lambda</text>
+  <text x="920" y="682" text-anchor="middle" class="tiny">Publish realtime updates</text>
+  <rect x="570" y="635" width="84" height="62" class="box" fill="#fde68a"/>
+  <text x="612" y="660" text-anchor="middle" class="small">SNS</text>
+  <text x="612" y="682" text-anchor="middle" class="tiny">Admin</text>
+  <rect x="790" y="635" width="84" height="62" class="box" fill="#fcd34d"/>
+  <text x="832" y="660" text-anchor="middle" class="small">SNS</text>
+  <text x="832" y="682" text-anchor="middle" class="tiny">Vote Event</text>
+  <rect x="180" y="618" width="190" height="120" class="box" fill="#e9d5ff"/>
+  <text x="275" y="654" text-anchor="middle" class="small">DynamoDB</text>
+  <text x="275" y="680" text-anchor="middle" class="tiny">Votes</text>
+  <text x="275" y="702" text-anchor="middle" class="tiny">Stats</text>
+  <text x="275" y="724" text-anchor="middle" class="tiny">PollConfig</text>
+  <rect x="1018" y="690" width="110" height="72" class="box" fill="#f5d0fe"/>
+  <text x="1073" y="720" text-anchor="middle" class="small">AppSync</text>
+  <text x="1073" y="742" text-anchor="middle" class="tiny">Realtime GraphQL</text>
+  <rect x="560" y="760" width="122" height="62" class="box" fill="#fef3c7"/>
+  <text x="621" y="786" text-anchor="middle" class="small">Amazon SES</text>
+  <text x="621" y="807" text-anchor="middle" class="tiny">Admin notifications</text>
+  <rect x="80" y="175" width="255" height="116" class="box" fill="#dcfce7"/>
+  <text x="207" y="212" text-anchor="middle" class="small">CloudWatch</text>
+  <text x="207" y="238" text-anchor="middle" class="tiny">Monitoring &amp; Logging</text>
+  <text x="207" y="262" text-anchor="middle" class="tiny">API Gateway • Step Functions</text>
+  <text x="207" y="282" text-anchor="middle" class="tiny">Lambda • DynamoDB</text>
+  <path class="arrow" d="M945 181 L1025 210"/>
+  <path class="arrow" d="M1175 181 L1095 210"/>
+  <path class="arrow" d="M1060 284 L1060 325"/>
+  <path class="arrow" d="M975 370 L810 352"/>
+  <path class="arrow" d="M1022 418 L930 472"/>
+  <path class="arrow" d="M1098 418 L1170 472"/>
+  <path class="arrow" d="M645 352 L542 470"/>
+  <path class="arrow" d="M727 405 L732 470"/>
+  <path class="arrow" d="M542 578 L528 635"/>
+  <path class="arrow" d="M732 578 L723 635"/>
+  <path class="arrow" d="M528 697 L370 678"/>
+  <path class="arrow" d="M723 697 L370 704"/>
+  <path class="arrow" d="M542 578 L612 635"/>
+  <path class="arrow" d="M732 578 L832 635"/>
+  <path class="arrow" d="M832 697 L920 697"/>
+  <path class="arrow" d="M920 697 L1018 726"/>
+  <path class="arrow" d="M612 697 L621 760"/>
+  <path class="subtle dashed" d="M275 618 L275 300 L335 300"/>
+  <path class="subtle dashed" d="M542 470 C 480 385, 375 330, 335 250"/>
+  <path class="subtle dashed" d="M732 470 C 670 385, 420 320, 335 235"/>
+  <path class="subtle dashed" d="M723 635 C 650 600, 470 600, 370 618"/>
+  <text x="847" y="451" class="tiny">Static content delivery</text>
+  <text x="614" y="452" class="tiny">Admin workflow</text>
+  <text x="701" y="452" class="tiny">User workflow</text>
+  <text x="440" y="610" class="tiny">GetItem / PutItem / UpdateItem</text>
+  <text x="760" y="620" class="tiny">Publish vote event</text>
+  <text x="545" y="615" class="tiny">Close-election notifications</text>
+</svg>
