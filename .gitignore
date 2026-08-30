@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+.parcel-cache/
+.env
+.env.*
+!.env.example
+*.log
+*.zip
+__pycache__/
+.DS_Store
+~$*
+
