@@ -112,7 +112,7 @@ function LoginPage() {
         {/* Header */}
         <div className="login-header">
           <h1>Welcome Back</h1>
-          <p className="login-subtitle">Sign in to your account</p>
+          <p className="login-subtitle">Sign in to continue your journey</p>
         </div>
 
         {/* Success Message */}
@@ -134,7 +134,7 @@ function LoginPage() {
           {/* Email Field */}
           <div className="form-group">
             <label htmlFor="email" className="form-label">
-              Email Address *
+              Email Address
             </label>
             <input
               type="email"
@@ -152,7 +152,7 @@ function LoginPage() {
           {/* Password Field */}
           <div className="form-group">
             <label htmlFor="password" className="form-label">
-              Password *
+              Password
             </label>
             <input
               type="password"

@@ -3,19 +3,19 @@ import "./researchFeed.css";
 import { useFetch } from "../../customHooks/useFetch";
 import ResearchItem from "./ResearchItem";
 
+const bannedKeywords = [
+  "rat","rats","mouse","mice","murine","drosophila","fly","flies",
+  "worm","c. elegans","nematode","plant","seed","crop","wheat",
+  "rice","cow","bovine","cattle","sheep","pig","porcine",
+  "skin","cosmetic","dermatology","retraction","erratum","correction"
+];
+
 function ResearchFeed() {
   const cleanText = (text) => {
     if (!text) return "";
     const doc = new DOMParser().parseFromString(text, "text/html");
     return doc.body.textContent || "";
   };
-
-  const bannedKeywords = [
-    "rat","rats","mouse","mice","murine","drosophila","fly","flies",
-    "worm","c. elegans","nematode","plant","seed","crop","wheat",
-    "rice","cow","bovine","cattle","sheep","pig","porcine",
-    "skin","cosmetic","dermatology","retraction","erratum","correction"
-  ];
 
   const currentYear = new Date().getFullYear();
   const fromYear = currentYear - 3;

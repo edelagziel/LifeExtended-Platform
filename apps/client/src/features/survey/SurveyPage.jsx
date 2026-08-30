@@ -12,7 +12,6 @@ function SurveyPage() {
     voteError,
     voteSuccess,
     handleVote,
-    resetSurvey,
     isEmailLocked,
   } = useSurvey();
 
