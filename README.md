@@ -57,6 +57,17 @@ flowchart LR
     L2 -. logs .-> CW
 ```
 
+### AWS workflow snapshots
+
+The deployed system is centered around two separate Step Functions workflows:
+
+| Workflow | Responsibility | Visual walkthrough |
+| --- | --- | --- |
+| `VoteProcess` | Validate input, hash identity, enforce one-vote semantics, update results and publish the vote event | [View workflow](docs/AWS_WORKFLOWS.md#voteprocess--user-voting-workflow) |
+| `CloseElectionProcess` | Close the election, handle final-result processing and publish the administrative event | [View workflow](docs/AWS_WORKFLOWS.md#closeelectionprocess--admin-closure-workflow) |
+
+The detailed workflow page is based on the deployed Step Functions views and presents them as clean GitHub-native diagrams: [AWS Workflow Visuals](docs/AWS_WORKFLOWS.md).
+
 The architecture separates the two main business paths:
 
 ### User voting flow
@@ -186,6 +197,7 @@ LifeExtended-Platform/
 ├── infrastructure/          # Notes about deployed AWS infrastructure
 ├── docs/
 │   ├── ARCHITECTURE.md
+│   ├── AWS_WORKFLOWS.md
 │   ├── SECURITY.md
 │   └── OBSERVABILITY.md
 └── README.md
@@ -234,6 +246,7 @@ baseline-pre-refactor
 ## Documentation
 
 - [AWS / Application Architecture](docs/ARCHITECTURE.md)
+- [AWS Step Functions Workflows](docs/AWS_WORKFLOWS.md)
 - [Security Architecture](docs/SECURITY.md)
 - [Logging & Observability](docs/OBSERVABILITY.md)
 - [Infrastructure Notes](infrastructure/README.md)
