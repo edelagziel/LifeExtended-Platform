@@ -1,6 +1,6 @@
 import type { Poll, CreatePollDTO, UpdatePollDTO, ApiResponse } from "../types/poll.types";
 
-const API_KEY = "da2-p4q37etihjbuhifsro67t3epfm";
+const API_KEY = import.meta.env.VITE_ADMIN_API_KEY || "";
 const BASE_URL = "/admin";
 
 // Headers for all requests
