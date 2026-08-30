@@ -1,0 +1,37 @@
+.home-page {
+    padding: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .home-intro {
+    margin-bottom: 2rem;
+  }
+  
+  .home-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .badge {
+    font-size: 0.75rem;
+    background: #eef2ff;
+    color: #3730a3;
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+  
+  .home-metrics {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .home-cta {
+    padding: 1.5rem;
+    background: var(--card-bg, #f9fafb);
+    border-radius: 12px;
+    text-align: center;
+  }
+  

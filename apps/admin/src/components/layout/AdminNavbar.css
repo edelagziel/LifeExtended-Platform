@@ -1,0 +1,184 @@
+.admin-navbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background: rgba(var(--surface-rgb), 0.95);
+}
+
+.admin-navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.admin-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--text);
+}
+
+.logo-icon {
+  font-size: 24px;
+}
+
+.logo-text {
+  letter-spacing: -0.5px;
+}
+
+.logo-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  background: var(--accent);
+  color: white;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* Right Side Container */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Navigation Links */
+.admin-nav-links {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--muted);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--text);
+  background: var(--bg);
+}
+
+.nav-link.active {
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.1);
+}
+
+.nav-icon {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.nav-link.active .nav-icon {
+  opacity: 1;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--border);
+  background: var(--bg);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background: var(--surface);
+  transform: scale(1.05);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Logout Button */
+.logout-button {
+  padding: 10px 16px;
+  border: 2px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+  border-color: #e74c3c;
+  background: #fee;
+  color: #e74c3c;
+  transform: scale(1.02);
+}
+
+.logout-button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-navbar-container {
+    padding: 12px 16px;
+  }
+  
+  .logo-text {
+    display: none;
+  }
+  
+  .navbar-right {
+    gap: 8px;
+  }
+  
+  .admin-nav-links {
+    gap: 4px;
+  }
+  
+  .nav-link {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .logo-badge {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+  
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .logout-button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}

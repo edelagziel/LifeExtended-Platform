@@ -1,0 +1,307 @@
+/* =========================
+   Theme tokens
+   ========================= */
+body.light {
+  --bg: #f6f7fb;
+  --text: #0f172a;
+  --muted: #64748b;
+  --surface: #ffffff;
+  --surface-rgb: 255, 255, 255;
+  --border: rgba(15, 23, 42, 0.08);
+  --link: #2563eb;
+
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-rgb: 37, 99, 235;
+  --accent-2: #06b6d4;
+
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 6px 16px rgba(15, 23, 42, 0.06);
+
+  --button-bg: #ffffff;
+  --button-text: #0f172a;
+  --button-border: rgba(15, 23, 42, 0.12);
+}
+
+body.dark {
+  --bg: #05070d; /* Darker background for more contrast */
+  --surface: #0e1626; /* A bit lighter than bg for clear card surfaces */
+  --surface-rgb: 14, 22, 38;
+  --text: #e5e7eb;
+  --muted: #c7d0e0; /* Higher contrast muted text for readability */
+  --border: #27324a; /* Stronger border for surface separation */
+  --link: #93c5fd;
+
+  --accent: #60a5fa;
+  --accent-hover: #3b82f6;
+  --accent-rgb: 96, 165, 250;
+  --accent-2: #22d3ee;
+
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.32);
+
+  --button-bg: #151b29;
+  --button-text: #e5e7eb;
+  --button-border: #27324a;
+}
+
+/* =========================
+   Global base
+   ========================= */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(96, 165, 250, 0.18), transparent 60%),
+              radial-gradient(900px 500px at 90% 0%, rgba(34, 211, 238, 0.12), transparent 55%),
+              var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+/* --- Calm dark background override --- */
+body.dark {
+  background: linear-gradient(180deg, #05070d 0%, #0a1220 100%);
+}
+
+ /* Smooth theme switch */
+body, .stat-card, nav, button, input, textarea, select {
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* =========================
+   Inputs and form fields
+   ========================= */
+input,
+textarea,
+select {
+  background: var(--surface);
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  transition: background-color 180ms, color 180ms, border-color 180ms, box-shadow 180ms;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-2, #22d3ee);
+}
+
+/* =========================
+   Layout helpers
+   ========================= */
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  width: 100%;
+  padding: 24px 32px;
+}
+
+/* =========================
+   Navbar
+   ========================= */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  margin: 16px auto;
+  max-width: 1100px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+
+  backdrop-filter: blur(10px);
+}
+
+nav a {
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: var(--text);
+  opacity: 0.9;
+}
+nav a:hover {
+  background: rgba(148, 163, 184, 0.10);
+}
+
+/* =========================
+   Buttons
+   ========================= */
+button {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--button-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   Headings / text
+   ========================= */
+h1, h2, h3 {
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+h1 {
+  font-size: 32px;
+}
+p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* =========================
+   Stat cards (your main UI)
+   ========================= */
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  margin: 14px 0;
+
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+
+  transition: box-shadow 180ms ease, transform 180ms ease, border-color 180ms ease;
+}
+
+.stat-card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.stat-card__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.stat-card__title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.stat-card__value {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat-card__desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.stat-card__help {
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+body.dark footer {
+  background: rgba(17, 24, 39, 0.92);
+}
+
+/* =========================
+   Survey options - dark mode styling
+   ========================= */
+.survey-option {
+  /* Ensure always transitions smoothly and uses surface/background in both modes */
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  box-shadow: none;
+  border-radius: 12px;
+  transition: background 0.16s, border-color 0.16s, color 0.16s, box-shadow 0.16s;
+}
+
+.survey-option:hover,
+.survey-option:focus-visible {
+  background: color-mix(in srgb, var(--surface) 85%, var(--accent) 15%);
+  border-color: var(--accent);
+  color: var(--text);
+  box-shadow: 0 0 0 2px var(--accent, #60a5fa);
+  outline: none;
+}
+
+.survey-option[aria-checked="true"],
+.survey-option.selected {
+  background: color-mix(in srgb, var(--surface) 65%, var(--accent) 35%);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+/* =========================
+   Home CTA (call-to-action) card
+   ========================= */
+.home-cta {
+  padding: 1.5rem;
+  background: var(--surface);
+  border-radius: 12px;
+  text-align: center;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  color: var(--text);
+}
+
+body.dark .home-cta {
+  background: var(--surface); /* Ensures no white blocks in dark */
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  box-shadow: var(--shadow-soft);
+}
+footer {
+  margin-top: auto;
+  padding: 16px 24px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  text-align: center;
+}
